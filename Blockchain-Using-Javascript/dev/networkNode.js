@@ -164,7 +164,7 @@ app.post('/register-add-brodcast-node', function (req, res) {
 
 });
 
-// register multiple nodes at once 
+// register multiple nodes at once
 app.post('/register-node', function (req, res) {
     const newNodeUrl = req.body.newNodeUrl;
     const notCurrentNode = bitcoin.currentNodeUrl !== newNodeUrl;
