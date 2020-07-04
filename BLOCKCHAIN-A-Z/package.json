@@ -1,0 +1,23 @@
+{
+  "name": "blockchain(a-z)",
+  "version": "1.0.0",
+  "description": "blockchain implementation using javascript",
+  "scripts": {
+    "node_1": "nodemon --watch src -e js src/blockchain.js 3001 http://localhost:3001",
+    "node_2": "nodemon --watch src -e js src/blockchain.js 3002 http://localhost:3002",
+    "node_3": "nodemon --watch src -e js src/blockchain.js 3003 http://localhost:3003",
+    "node_4": "nodemon --watch src -e js src/blockchain.js 3004 http://localhost:3004",
+    "node_5": "nodemon --watch src -e js src/blockchain.js 3005 http://localhost:3005"
+  },
+  "author": "Anuj Yadav",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.7",
+    "request": "^2.88.0",
+    "request-promises": "^1.1.0",
+    "sha256": "^0.2.0",
+    "uuid": "^3.3.2"
+  }
+}

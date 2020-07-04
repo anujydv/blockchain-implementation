@@ -1,7 +1,6 @@
-#Module 1 - Create a Blockchain
 import datetime
 import hashlib
-import json 
+import json
 from flask import Flask,jsonify,request
 import requests
 from uuid import uuid4
@@ -14,7 +13,7 @@ class Blockchain:
         self.transactions = []
         self.create_block(proof = 1,previous_hash = '0')
         self.nodes = set()
-        
+
     def create_block(self,proof,previous_hash):
         block = {'index':len(self.chain)+1,
                  'timestamp': str(datetime.datetime.now()),
@@ -25,7 +24,7 @@ class Blockchain:
         self.transactions = []
         self.chain.append(block)
         return block
-    
+
     def add_transaction(self,sender,receiver,amount):
         self.transactions.append({'sender':sender,
                                   'receiver':receiver,
@@ -33,11 +32,11 @@ class Blockchain:
                                   })
         previous_block = self.get_previous_block()
         return previous_block['index']+1
-    
+
     def add_node(self,address):
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
-        
+
     def replace_cahin(self,):
         network = self.nodes
         longest_chain = None
@@ -54,10 +53,10 @@ class Blockchain:
             self.chain = longest_chain
             return True
         return False
-    
+
     def get_previous_block(self):
         return self.chain[-1]
-    
+
     def proof_of_work(self,previous_proof):
         new_proof = 1
         check_proof = False
@@ -68,11 +67,11 @@ class Blockchain:
             else:
                 new_proof+=1
         return new_proof
-    
+
     def hash(self,block):
         encode_block = json.dumps(block,sort_keys = True).encode()
         return hashlib.sha256(encode_block).hexdigest()
-    
+
     def is_chain_valid(self,chain):
         previous_block = chain[0]
         block_index = 1
@@ -88,8 +87,8 @@ class Blockchain:
             previous_block = block
             block_index+=1
         return True
-   
-         
+
+
 #create a Web App
 
 app = Flask(__name__)
@@ -133,10 +132,10 @@ def add_transaction():
         return 'Some element of the transactiojn are missing',400
     index = blockchain.add_transaction(json['sender'],json['receiver'],json['amount'])
     response = {
-            'message':f'{this transaction will be added to block {index}}'
+            'message':f'this transaction will be added to block {index}'
                 }
     return jsonify(response),201
-    
+
 #replace chain by longest chain
 @app.route('/replace_chain',methods=['GET'])
 def replace_chain():
