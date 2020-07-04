@@ -45,4 +45,4 @@
     * BASE URL &nbsp; &nbsp; ```http://localhost:5000/```
     * Follow BLOCKCHAIN-A-Z (JAVASCRIPT) API routes
 
-  **_Try create_cryptocurrency it help us to create own crypto currency_**
+  **_Try create_cryptocurrency it help's to create own crypto currency_**
