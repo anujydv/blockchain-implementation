@@ -1,48 +1,62 @@
-# BLOCKCHAIN-IMPLEMENTATION
+# Blockchain Implementation
 
-## Description
+A blockchain built from scratch to show how one works under the hood: blocks, hashing, proof-of-work, a peer-to-peer network of nodes, and a longest-chain consensus algorithm.
 
----
->  This repository have three folder each folder contain same logic using different programing language (Python and Javascript). Repository contain different file's which by combining these any one analyse how blockchain work under the hood.
+The same ideas are implemented three times, in JavaScript and Python:
 
-### HOW TO SETUP ENV AND RUN CODE ?
----
-  + BLOCKCHAIN-A-Z (JAVASCRIPT)
+| Folder | Language | What it covers |
+|---|---|---|
+| `BLOCKCHAIN-A-Z` | JavaScript | Minimal chain: mining, fetching and validating the chain |
+| `BLOCKCHAIN-USING-JAVASCRIPT` | JavaScript | Multi-node network: transactions, broadcasting, node registration, consensus |
+| `BLOCKCHAIN-USING-PYTHON` | Python | Python version of `BLOCKCHAIN-A-Z` (`create_blockchain`), plus a simple cryptocurrency (`create_cryptocurrency`) |
 
-    * ```cd BLOCKCHAIN-A-Z```
-    * ```npm install```
-    * ```npm run node_1``` &nbsp; start all five node[node_1, node_2, e.t.c] perform all below listed api
+## How to run
 
-  + API
-    * BASE URL &nbsp; &nbsp; ```http://localhost:3000/``` ports change as per running node
-    * MINE BLOCK &nbsp; &nbsp; ```/mine_block```
-    * GET CHAIN &nbsp; &nbsp; ```/get_chain```
-    * CHAIN IS VALID &nbsp; &nbsp; ```/chain_is_valid```
----
-  + BLOCKCHAIN-USING-JAVASCRIPT
+### BLOCKCHAIN-A-Z (JavaScript)
 
-    * ```cd BLOCKCHAIN-USING-JAVASCRIPT```
-    * ```npm install```
-    * ```npm run node_1``` &nbsp; start all five node[node_1, node_2, e.t.c] perform all below listed api
+```bash
+cd BLOCKCHAIN-A-Z
+npm install
+npm run node_1   # node_1 … node_5 start the five nodes
+```
 
-  + API
-    * BASE URL &nbsp; &nbsp; ```http://localhost:3000/```
-    * GET CHAIN &nbsp; &nbsp; ```/blockchain```
-    * BROADCAST BLOCK OVER NETWORK &nbsp; &nbsp; ```/transaction/broadcast```
-    * MINE BLOCK &nbsp; &nbsp; ```/mine```
-    * RECEIVE NEW BLOCK FROM OTHER PEER &nbsp; &nbsp; ```/receive-new-block```
-    * RECEIVE AND BROADCAST NEW BLOCK OVER OTHER PEER &nbsp; &nbsp; ```/register-add-brodcast-node```
-    * ADD MORE NEW BLOCK INTO NETWORK &nbsp; &nbsp; ```/register-node```
-    * ADD MORE THAN ONE NEW BLOCK INTO NETWORK &nbsp; &nbsp; ```/register-nodes-bulk```
-    * APPLY CONSENSUS ALGORITHM &nbsp; &nbsp; ```/consensus```
----
-  + BLOCKCHAIN-USING-PYTHON (python implementation on BLOCKCHAIN-A-Z inside create_blockchain folder)
+Base URL: `http://localhost:3000/` (the port changes per node)
 
-    * ```cd BLOCKCHAIN-USING-PYTHON```
-    * ```pip install -r requirements.txt```
-    * ```python create_blockchain/blockchain.py```
-  + API
-    * BASE URL &nbsp; &nbsp; ```http://localhost:5000/```
-    * Follow BLOCKCHAIN-A-Z (JAVASCRIPT) API routes
+| Endpoint | Purpose |
+|---|---|
+| `/mine_block` | Mine a new block |
+| `/get_chain` | Return the full chain |
+| `/chain_is_valid` | Validate the chain |
 
-  **_Try create_cryptocurrency it help's to create own crypto currency_**
+### BLOCKCHAIN-USING-JAVASCRIPT
+
+```bash
+cd BLOCKCHAIN-USING-JAVASCRIPT
+npm install
+npm run node_1   # node_1 … node_5 start the five nodes
+```
+
+Base URL: `http://localhost:3000/`
+
+| Endpoint | Purpose |
+|---|---|
+| `/blockchain` | Return the full chain |
+| `/transaction/broadcast` | Create a transaction and broadcast it to the network |
+| `/mine` | Mine a new block |
+| `/receive-new-block` | Accept a block mined by another peer |
+| `/register-add-brodcast-node` | Register a node and broadcast it to the network |
+| `/register-node` | Register a single node |
+| `/register-nodes-bulk` | Register several nodes at once |
+| `/consensus` | Run the consensus algorithm (longest valid chain wins) |
+
+### BLOCKCHAIN-USING-PYTHON
+
+```bash
+cd BLOCKCHAIN-USING-PYTHON
+pip install -r requirements.txt
+python create_blockchain/blockchain.py
+```
+
+Base URL: `http://localhost:5000/`. It uses the same routes as `BLOCKCHAIN-A-Z`.
+
+Try `create_cryptocurrency` to build a simple cryptocurrency on top of the chain.
